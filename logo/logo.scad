@@ -16,6 +16,9 @@ color(Pine) {
 translateBeam([0,1,8]) xBeam(24);
 translateBeam([2,0,0]) zBeam(16);
 
+translateBeam([1,0,7]) yBeam(2);
+translateBeam([24,0,5]) yBeam(2);
+
 // g
 translateBeam([6,0,8]) zBeam(8);
 translateBeam([6,1,15]) xBeam(6);
@@ -41,8 +44,6 @@ translateBeam([23,0,0]) zBeam(24);
 translateBeam([2,1,0]) xBeam(5);
 translateBeam([6,0,0]) zBeam(5);
 translateBeam([2,1,4]) xBeam(24);
-translateBeam([3,0,1]) yBeam(2);
-translateBeam([5,0,3]) yBeam(2);
 
 // e
 translateBeam([8,0,0]) zBeam(5);
