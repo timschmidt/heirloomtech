@@ -8,6 +8,10 @@
 include <../MCAD/gridbeam.scad>
 include <../MCAD/materials.scad>
 
+beam_width = 3 * inch;
+beam_wall_thickness = 1/4 * inch;
+beam_hole_diameter = 3/4 * inch;
+
 color(Steel) {
 
 // ways
