@@ -1,5 +1,5 @@
 /*********************************
-* Gridbeam Bookcase              *
+* Gridbeam Bookshelf             *
 * (c) Timothy Schmidt 2013       *
 * http://www.github.com/gridbeam *
 * License: GPLv3 / TAPR OHL      *
@@ -7,6 +7,8 @@
 
 include <../MCAD/gridbeam.scad>
 include <../MCAD/materials.scad>
+
+beam_is_hollow = 0;
 
 color(Pine){
 
