@@ -2,7 +2,6 @@ These modifications are licensed under the GNU GPLv3 and TAPR Open Hardware Lice
 
 2013:
  - initial stab at organizing our ad-hoc collection of gridbeam SCAD doodles
- - pulled gridbeam.scad out of MCAD, for rapid development alongside the files using it. all changes to gridbeam.scad will be licensed LGPL v2.1+ to make upstreaming changes to MCAD easy.
  - stubbed model/dxf selection for gridbeam.scad and dome connector
  - modernized and cleaned up syntax
  - works for me, but likely to make an irrational number of your socks disappear, off to github!
