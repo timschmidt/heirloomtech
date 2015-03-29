@@ -1,7 +1,7 @@
-gridbeam-projects
-=================
+heirloomtech
+============
 
-Plans and source files for gridbeam projects
+Plans and source files for heirloomtech projects
 
 After cloning the repository, type the following to clone the various submodules:
 

@@ -1,5 +1,8 @@
 These modifications are licensed under the GNU GPLv3 and TAPR Open Hardware Licenses.
 
+2015:
+ - refine scope of project, rename to heirloomtech
+
 2013:
  - initial stab at organizing our ad-hoc collection of gridbeam SCAD doodles
  - stubbed model/dxf selection for gridbeam.scad and dome connector

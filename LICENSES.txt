@@ -1,5 +1,5 @@
 /
-* OpenSCAD Gridbeam Parts and Projects (http://www.girhub.com/gridbeam)
+* OpenSCAD HeirloomTech Parts and Projects (http://www.github.com/timschmidt/heirloomtech)
 * (c) Timothy Schmidt 2013 <timschmidt@gmail.com>
 * License: Dual GPLv3 / TAPR OHL
 *
@@ -21,7 +21,7 @@
 */
 
 /
-* OpenSCAD Gridbeam Library (gridbeam.scad) (http://www.girhub.com/gridbeam)
+* OpenSCAD Gridbeam Library (gridbeam.scad) (http://www.github.com/timschmidt/heirloomtech)
 * (c) Timothy Schmidt 2013 <timschmidt@gmail.com>
 * License: LGPL v2.1+
 *
