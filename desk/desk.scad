@@ -1,9 +1,9 @@
-/*********************************
-* Gridbeam Desk                  *
-* (c) Timothy Schmidt 2013       *
-* http://www.github.com/gridbeam *
-* License: GPLv3+ / TAPR OHL     *
-*********************************/
+/*************************************
+* HeirloomTech Desk                  *
+* (c) Timothy Schmidt 2013           *
+* http://www.github.com/heirloomtech *
+* License: GPLv3+ / TAPR OHL         *
+*************************************/
 
 include <../MCAD/gridbeam.scad>
 include <../MCAD/materials.scad>
