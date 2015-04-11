@@ -12,6 +12,7 @@
 * standoff for easy 3D printing in any
 * orientation
 *
+* @id mounting-hole
 * @name mounting hole
 * @category Printed
 */

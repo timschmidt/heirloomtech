@@ -1,14 +1,14 @@
-/*************************************
-* HeirloomTech GROVE mounting plate  *
-* (c) Timothy Schmidt 2013           *
-* http://www.github.com/heirloomtech *
-* License: GPLv3+ / TAPR OHL         *
-*************************************/
+/************************************************
+* HeirloomTech GROVE mounting plate             *
+* (c) Timothy Schmidt 2015                      *
+* http://www.github.com/timschmidt/heirloomtech *
+* License: GPLv3+ / TAPR OHL                    *
+************************************************/
 
 include <../MCAD/gridbeam.scad>
 include <../MCAD/materials.scad>
 
-groves_wide = 2;
+groves_wide = 1;
 groves_tall = 2;
 grove_width = 20;
 bezel = 20;

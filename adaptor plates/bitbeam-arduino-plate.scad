@@ -1,3 +1,11 @@
+/**
+ * @id bitbeam-arduino-plate
+ * @name Bitbeam Arduino Plate
+ * @category Printed
+ * @using 4 m3nut
+ * @using 4 m3x10
+ */
+
 use <arduino.scad>
 
 beam_width = 7.9375;   // 5/16 inches
@@ -25,5 +33,7 @@ difference(){
 			}
 }
 
-// Uncomment next line if you want to see the entire board
-//translate([17,60,2]) Arduino();
+// Render the Arduino board
+if(render_board){
+  translate([17,60,2]) Arduino();
+}
