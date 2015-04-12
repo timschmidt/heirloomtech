@@ -1,9 +1,9 @@
-/*************************************
-* HeirloomTech Laser Cutter          *
-* (c) Timothy Schmidt 2013           *
-* http://www.github.com/heirloomtech *
-* License: GPLv3+ / TAPR OHL         *
-*************************************/
+/************************************************
+* HeirloomTech Laser Cutter                     *
+* (c) Timothy Schmidt 2013                      *
+* http://www.github.com/timschmidt/heirloomtech *
+* License: GPLv3+ / TAPR OHL                    *
+************************************************/
 
 include <../MCAD/gridbeam.scad>
 include <../MCAD/materials.scad>
