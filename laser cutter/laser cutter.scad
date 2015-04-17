@@ -1,8 +1,14 @@
 /************************************************
-* HeirloomTech Laser Cutter                     *
-* (c) Timothy Schmidt 2013                      *
-* http://www.github.com/timschmidt/heirloomtech *
-* License: GPLv3+ / TAPR OHL                    *
+* HeirloomTech Laser Cutter
+* (c) Timothy Schmidt 2015
+* http://www.github.com/timschmidt/heirloomtech
+* License: GPLv3+ / TAPR OHL
+*
+* @id bitbeam-arduino-plate
+* @name Bitbeam Arduino Plate
+* @category Printed
+* @using 20 frame-1.5x48
+* @using 2 frame-1.5x36
 ************************************************/
 
 include <../MCAD/gridbeam.scad>
