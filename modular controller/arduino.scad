@@ -8,6 +8,7 @@
 * @category Electronics
 * @using 4 bolt-m4x10
 * @using 4 hexnut-nylock-m4
+* @step Secure the arduino in place, using the provided fasteners
 * 
 * @todo split part into multiple parts based on thingdoc dependencies - arduino, arduino-mount, arduino-clearance
 *
