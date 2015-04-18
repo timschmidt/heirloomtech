@@ -1,7 +1,7 @@
 /*
 * @name Arduino Model
 * @id arduino
-* @license GPLv2+
+* @license http://reprap.org/licenses/GPLv2Plus ?
 * @author Jestin Stoffel, 2012
 * @author Timothy Schmidt, 2015
 * @git http://www.github.com/timschmidt/heirloomtech
@@ -9,7 +9,7 @@
 * @using 4 bolt-m4x10
 * @using 4 hexnut-nylock-m4
 * 
-* @todo split part into multiple parts based on thingdoc dependencies - arduino, arduino-negative, arduino-outline?
+* @todo split part into multiple parts based on thingdoc dependencies - arduino, arduino-mount, arduino-clearance
 *
 * OLD API
 * Throughout this entire model, (0,0) is the top left
@@ -27,10 +27,14 @@
 * NEW API
 * Variables settable from the command line:
 *
+* arduino-clearance
 * - model - string - "mega", "uno", "tiny"
 * - face - string - render 2D outline of the named
 *   face suitable for port cutouts.  "power", "
-* - 3d ports
+*
+* arduino-mount
+*
+* arduino
 * - mount - string - "none", "holes", "posts"
 * - clearance - bool - "true" = 3D model enclosing
 *   all necessary board clearances
@@ -41,7 +45,7 @@
 
 board_height = 1.8;
 
-module Arduino(solid_holes, combined_headers, extend_ports, )
+module arduino(solid_holes, combined_headers, extend_ports, )
 {
 	echo(str("solid_holes: ", solid_holes));
 	echo(str("combined_headers: ", combined_headers));
