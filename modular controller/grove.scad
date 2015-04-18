@@ -1,5 +1,5 @@
 /*
-* @name GROVE Model
+* @name GROVE 1x1 Model
 * @id grove-1x1
 * @license GPLv3+, TAPR OHL
 * @author Timothy Schmidt, 2015
@@ -7,6 +7,8 @@
 * @category Electronics
 * @using 2 bolt-m3x10
 * @using 2 hexnut-nylock-m4
+*
+* @todo implement variable to choose 1x1, 1x2, 2x2
 */
 
 include <../MCAD/gridbeam.scad>

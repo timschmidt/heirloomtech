@@ -8,6 +8,7 @@
 * @using 4 bolt-m4x10
 * @using 4 hexnut-nylock-m4
 * 
+* @todo implement variable for choosing A, B, A+, B+, 2 B, etc.
 */
 
 // All measurements derived from the diagram available here:
