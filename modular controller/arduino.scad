@@ -3,22 +3,45 @@
 * @id arduino
 * @license GPLv2+
 * @author Jestin Stoffel, 2012
+* @author Timothy Schmidt, 2015
 * @git http://www.github.com/timschmidt/heirloomtech
 * @category Electronics
 * @using 4 bolt-m4x10
 * @using 4 hexnut-nylock-m4
+* 
+* @todo split part into multiple parts based on thingdoc dependencies - arduino, arduino-negative, arduino-outline?
 *
+* OLD API
+* Throughout this entire model, (0,0) is the top left
+* mounting hole (nearest  the USB port)
+* 
+* - solid_holes - specifies if mounting holes should
+*   be added to or subtracted from the model
+* - combined_headers - specifies if space should be
+*   left between adjacent female headers, or if they
+*   should be rendered as a single header
+* - extend_ports - extends the USB and power ports
+*   by a centimeter, so that holes are more easily
+*   made when a model is used as a negative
+*
+* NEW API
+* Variables settable from the command line:
+*
+* - model - string - "mega", "uno", "tiny"
+* - face - string - render 2D outline of the named
+*   face suitable for port cutouts.  "power", "
+* - 3d ports
+* - mount - string - "none", "holes", "posts"
+* - clearance - bool - "true" = 3D model enclosing
+*   all necessary board clearances
+* - board_height - float - defaults to 1.8mm
+*
+* 
 */
 
-// Throughout this entire model, (0,0) is the top left mounting hole (nearest  the USB port)
-
-// thickness of the PCB
 board_height = 1.8;
 
-// solid_holes - specifies if mounting holes should be added to or subtracted from the model
-// combined_headers - specifies if space should be left between adjacent female headers, or if they should be rendered as a single header
-// extend_ports - extends the USB and power ports by a centimeter, so that holes are more easily made when a model is used as a negative
-module Arduino(solid_holes, combined_headers, extend_ports)
+module Arduino(solid_holes, combined_headers, extend_ports, )
 {
 	echo(str("solid_holes: ", solid_holes));
 	echo(str("combined_headers: ", combined_headers));
