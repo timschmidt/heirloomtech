@@ -16,6 +16,18 @@
 * @todo tool changer brackets
 * @todo laser module
 * @todo side panels w/ hinges + latches
+* @todo tool holder bracket
+* @todo tool holder
+* @todo fiber laser tool
+* @todo rotary tool
+* @todo hot wire foam cutter tool
+* @todo FDM 3D printing tool
+* @todo direct metal laser sintering tool
+* @todo plasma cutter tool?
+* @todo vinyl cutter tool?
+* @todo pen plotter tool?
+* @todo inkjet tool (inkshield, continuous ink)
+* 
 ************************************************/
 
 include <../MCAD/gridbeam.scad>
