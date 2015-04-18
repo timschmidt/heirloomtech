@@ -1,4 +1,4 @@
-/************************************************
+/*
 * HeirloomTech Laser Cutter
 * (c) Timothy Schmidt 2015
 * http://www.github.com/timschmidt/heirloomtech
@@ -28,7 +28,7 @@
 * @todo pen plotter tool?
 * @todo inkjet tool (inkshield, continuous ink)
 * 
-************************************************/
+*/
 
 include <../MCAD/gridbeam.scad>
 include <../MCAD/materials.scad>
