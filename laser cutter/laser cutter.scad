@@ -7,8 +7,15 @@
 * @id bitbeam-arduino-plate
 * @name Bitbeam Arduino Plate
 * @category Printed
-* @using 20 frame-1.5x48
+* @using 21 frame-1.5x48
 * @using 2 frame-1.5x36
+*
+* @todo Y rails
+* @todo X gantry / rail
+* @todo X carriage
+* @todo tool changer brackets
+* @todo laser module
+* @todo side panels w/ hinges + latches
 ************************************************/
 
 include <../MCAD/gridbeam.scad>
@@ -21,24 +28,25 @@ color(Aluminum) {
 // Legs / Corners 
 translateBeam([0,0,0]) zBeam(32);
 translateBeam([31,0,0]) zBeam(32);
-translateBeam([0,31,0]) zBeam(32);
-translateBeam([31,31,0]) zBeam(32);
+translateBeam([0,30,0]) zBeam(32);
+translateBeam([31,30,0]) zBeam(32);
 
 // Base
 translateBeam([1,0,1]) yBeam(32);
 translateBeam([30,0,1]) yBeam(32);
 translateBeam([0,1,2]) xBeam(32);
-translateBeam([0,30,2]) xBeam(32);
+translateBeam([0,31,2]) xBeam(32);
 
 // Top
 translateBeam([1,0,31]) yBeam(32);
 translateBeam([30,0,31]) yBeam(32);
 translateBeam([0,1,30]) xBeam(32);
-translateBeam([0,30,30]) xBeam(32);
+translateBeam([0,31,25]) xBeam(32);
 
 // Lid
 translateBeam([0,7,31]) yBeam(24);
 translateBeam([31,7,31]) yBeam(24);
+translateBeam([0,31,30]) xBeam(32);
 #translateBeam([0,8,32]) topShelf(32, 24, 0);
 
 // Top wall panel
