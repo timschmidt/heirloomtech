@@ -9,28 +9,32 @@
 * @todo rotate around vertical axis to produce 2D pattern
 */
 
-include <../MCAD/units.scad>
+include <MCAD/units.scad>
 
 length = 12*inch;
-patterns = [round(1.5*inch),
-            round(1*inch),
-            40*mm,
-            50*mm,
-            20*mm
-           ];
+radius = 1.5*mm;
+threshold = 20*mm;
             
 union(){
-  for(x = [0 : length]) {
-    for(y = [0 : length]) {
-      // pseudocode follows
-      for(patterns){
-        if(x == pattern & y == pattern){
-          hull(){
-            circle1;
-            circle2;
-          }
-        }
+  // start iterating through the space
+  for(x = [0 : length]){
+    // check to see if the current position is part of a repeating pattern
+    for(i = [round(1.5*inch),round(1*inch),40*mm,50*mm,20*mm]){
+      if (x % i == 0){
+        // find the next point on a repeating pattern
+        for(y = [x : length]){
+          if (y % i == 0){
+            if (y - x < threshold){
+              hull(){
+                translate([x,0,0]) circle(r=radius, $fn=16);
+                translate([y,0,0]) circle(r=radius, $fn=16);
+              }
+            } else {
+              translate([x,0,0]) circle(r=radius, $fn=16);
+            }
+         }
       }
-    }
-  }
+   }
+}
+}
 }
