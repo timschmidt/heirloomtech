@@ -1,11 +1,12 @@
 /*
 * @name Hole Pattern
 * @id hole-pattern
-* @author Timothy Schmidt, 2013
+* @author Timothy Schmidt, 2015
 * @git http://www.github.com/timschmidt/heirloomtech
-* @license GPLv3+, TAPR OHL
+* @license GPLv3+
+* @license TAPR OHL
 *
-* @todo 
+* @todo rotate around vertical axis to produce 2D pattern
 */
 
 include <../MCAD/units.scad>

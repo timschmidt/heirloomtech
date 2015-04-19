@@ -1,10 +1,15 @@
-/**
- * @id bitbeam-arduino-plate
- * @name Bitbeam Arduino Plate
- * @category Printed
- * @using 4 m3nut
- * @using 4 m3x10
- */
+/*
+* @id bitbeam-arduino-plate
+* @name Bitbeam Arduino Plate
+* @author Timothy Schmidt, 2014
+* @license GPLv3+
+* @license TAPR OHL
+* @category Printed
+* @category Laser Cut
+* @category Milled
+* @using 4 m3nut
+* @using 4 m3x10
+*/
 
 use <arduino.scad>
 
