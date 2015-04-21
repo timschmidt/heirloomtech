@@ -1,8 +1,5 @@
-/**
- * @id rail-1.5x48
- * @name HeirloomTech Rail 1.5 inches x 48 inches
- * @category Printed
- */
+// @id rail-1.5x48
+// @name HeirloomTech Rail 1.5 inches x 48 inches
 
 include <../MCAD/gridbeam.scad>
 include <../MCAD/materials.scad>
