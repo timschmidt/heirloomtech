@@ -1,1 +1,2 @@
 - specify per-coastline padding
+- object oriented jscad files, with custom translation methods, etc.
