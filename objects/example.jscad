@@ -2,7 +2,7 @@ function getProperties(){
 return { id: "example",
   name: "Example Object",
   products: {1: "https://www.heirloomtech.com"},
-  licenses: {1: "https://www.gnu.org/licenses/agpl-3.0.html", 2: "http://www.tapr.org/TAPR_Open_Hardware_License_v1.0.txt"},
+  licenses: {1: "https://www.gnu.org/licenses/agpl-3.0.html", 2: "http://www.ohwr.org/projects/cernohl/wiki"},
   git: "http://www.github.com/timschmidt/heirloomtech",
   authors: {1: "Timothy Schmidt"},
   sources: {1: "3d-printer",2: "cnc-mill",3: "drill-press",4: "frame-factory"},
