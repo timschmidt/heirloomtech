@@ -1,9 +1,15 @@
-include <../MCAD/gridbeam.scad>
-include <../MCAD/materials.scad>
-
-// @id frame-1.5x12inches
-// @name HeirloomTech Frame 1.5 inches x 12 inches
-// @source http://www.8020.net/HT-Series-1.asp
+{ id: "frame-1.5x12inches",
+  name: "Frame 1.5 inches x 12 inches",
+  products: {"http://www.8020.net/HT-Series-1.asp"},
+  licenses: {"https://www.gnu.org/licenses/agpl-3.0.html","http://www.tapr.org/TAPR_Open_Hardware_License_v1.0.txt"},
+  git: "http://www.github.com/timschmidt/heirloomtech",
+  authors: {"Timothy Schmidt"},
+  sources: {"3d-printer","cnc-mill","drill-press","frame-factory"},
+  render: function(){},
+  translate: function(){},
+  scale: function(){},
+}
+  
 
 beam_is_hollow = 1;
 
