@@ -3,11 +3,12 @@
 function getProperties(){
 return { id: "hole-pattern",
   name: "Hole Pattern",
-  products: {1: ""},
-  licenses: {1: "https://www.gnu.org/licenses/agpl-3.0.html", 2: "http://www.tapr.org/TAPR_Open_Hardware_License_v1.0.txt"},
+  description: "A modular mounting hole pattern that provides broad compatability with worldwide standards.",
+  products: [],
+  licenses: ["https://www.gnu.org/licenses/agpl-3.0.html", "http://www.tapr.org/TAPR_Open_Hardware_License_v1.0.txt"],
   git: "http://www.github.com/timschmidt/heirloomtech",
-  authors: {1: "Timothy Schmidt"},
-  sources: {1: ""},
+  authors: ["Timothy Schmidt"],
+  sources: [],
   render: function(){},
   translate: function(){},
   scale: function(){}
@@ -17,50 +18,48 @@ return { id: "hole-pattern",
 
 function getParameterDefinitions() {
   return [
-    { name: 'width', type: 'float', initial: 10, caption: "Width of the cube:" },
-    { name: 'height', type: 'float', initial: 14, caption: "Height of the cube:" },
-    { name: 'depth', type: 'float', initial: 7, caption: "Depth of the cube:" },
-    { name: 'rounded', type: 'choice', caption: 'Round the corners?', values: [0, 1], captions: ["No thanks", "Yes please"], initial: 1 }
+    { name: 'threshold', type: 'float', initial: 10, caption: "Threshold for slots (mm): " },
+    { name: 'hole_size', type: 'float', initial: 14, caption: "Hole size (mm): " },
+    { name: 'threedee', type: 'choice', caption: '3D?', values: [0, 1], captions: ["No thanks", "Yes please"], initial: 0 }
   ];
 }
 
-function main(params) {
-  var result;
-  if(params.rounded == 1) {
-    result = CSG.roundedCube({radius: [params.width, params.height, params.depth], roundradius: 2, resolution: 32});
-  } else {
-    result = CSG.cube({radius: [params.width, params.height, params.depth]});
+// @todo I think this only works when there's one parameter - figure out how to do that
+function intersects(point_one, point_two){
+  if ( abs(point_one - point_two) > params.threshold ){
+    return point_two;
   }
-  return result;
 }
 
+function main(params) {
+  var patterns = [
+    // common metric sizes
+    [25, 40, 50, 100],
+    // common legacy sizes
+    [0.5 * 25.4, 0.75 * 25.4, 25.4, 1.5 * 25.4],
+  ];
+  
+  var holes = [];
+  patterns.forEach(function(pattern){
+    var filtered = pattern.filter(intersects());
+    pattern.forEach(function(entry){
+      holes.forEach(function(){
+        if ( true ) {
+          holes.push(circle({center: true}).scale(params.hole_size).translate([entry,0,0]));
+        }
+      });
+    });
+  });
+    
+  // foreach pattern, iterate through the pattern, checking the
+  //  holes array for nearby entries, combining them when they
+  //  fall within the threshold. 
 
-include <MCAD/units.scad>
-
-length = 12*inch;
-radius = 1.5*mm;
-threshold = 20*mm;
-            
-union(){
-  // start iterating through the space
-  for(x = [0 : length]){
-    // check to see if the current position is part of a repeating pattern
-    for(i = [round(1.5*inch),round(1*inch),40*mm,50*mm,20*mm]){
-      if (x % i == 0){
-        // find the next point on a repeating pattern
-        for(y = [x : length]){
-          if (y % i == 0){
-            if (y - x < threshold){
-              hull(){
-                translate([x,0,0]) circle(r=radius, $fn=16);
-                translate([y,0,0]) circle(r=radius, $fn=16);
-              }
-            } else {
-              translate([x,0,0]) circle(r=radius, $fn=16);
-            }
-         }
-      }
-   }
-}
-}
+  var result;
+  if(params.threedee == 1) {
+    result = CSG.roundedCube({radius: [params.threshold, params.hole_size, params.threedee], roundradius: 2, resolution: 32});
+  } else {
+    result = CSG.cube({radius: [params.threshold, params.hole_size, params.threedee]});
+  }
+  return holes;
 }

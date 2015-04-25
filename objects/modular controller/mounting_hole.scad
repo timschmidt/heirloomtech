@@ -1,44 +1,34 @@
-/*************************************
-* HeirloomTech 2D/3D mounting hole   *
-* (c) Timothy Schmidt 2013           *
-* http://www.github.com/heirloomtech *
-* License: GPLv3+ / TAPR OHL         *
-*************************************/
+function getProperties(){
+return { id: "mounting-hole",
+  name: "",
+  description: "",
+  products: {1: "https://www.heirloomtech.com"},
+  licenses: {1: "https://www.gnu.org/licenses/agpl-3.0.html", 2: "http://www.ohwr.org/projects/cernohl/wiki"},
+  git: "http://www.github.com/timschmidt/heirloomtech",
+  authors: {1: "Timothy Schmidt"},
+  sources: {1: "3d-printer",2: "cnc-mill",3: "drill-press",4: "frame-factory"},
+  render: function(){},
+  translate: function(){},
+  scale: function(){}
+};
 
-/**
-* Provides a modular mounting hole that
-* compiles to a simple hole for 2D
-* operations, and a volcano-shaped mounting
-* standoff for easy 3D printing in any
-* orientation
-*
-* @id mounting-hole
-* @name mounting hole
-* @category Printed
-*/
+}
 
-include <../MCAD/gridbeam.scad>
-include <../MCAD/materials.scad>
+function getParameterDefinitions() {
+  return [
+    { name: 'width', type: 'float', initial: 10, caption: "Width of the cube:" },
+    { name: 'height', type: 'float', initial: 14, caption: "Height of the cube:" },
+    { name: 'depth', type: 'float', initial: 7, caption: "Depth of the cube:" },
+    { name: 'rounded', type: 'choice', caption: 'Round the corners?', values: [0, 1], captions: ["No thanks", "Yes please"], initial: 1 }
+  ];
+}
 
-groves_wide = 2;
-groves_tall = 2;
-grove_width = 20;
-bezel = 20;
-
-// calculated values
-plate_width = groves_wide * grove_width + bezel * 2;
-plate_height = groves_tall * grove_width + bezel * 2;
-
-color(Aluminum) {
-
-  difference(){
-    square([plate_width, plate_height]);
-    union(){
-      for(x = [0 : groves_wide]){
-        for(y = [0 : groves_tall]){
-          translate([x * grove_width + bezel,y*grove_width + bezel,0]) circle(r=1.5,$fn=20);
-        }
-      }
-    }
+function main(params) {
+  var result;
+  if(params.rounded == 1) {
+    result = CSG.roundedCube({radius: [params.width, params.height, params.depth], roundradius: 2, resolution: 32});
+  } else {
+    result = CSG.cube({radius: [params.width, params.height, params.depth]});
   }
+  return result;
 }
