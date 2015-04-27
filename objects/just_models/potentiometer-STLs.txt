@@ -1,0 +1,7 @@
+Small:
+Jameco: RV16AF-10-20R1-B14
+http://www.jameco.com/webapp/wcs/stores/servlet/Product_10001_10001_286206_-1
+
+Large:
+Jameco: RV24AF-10-15R1-B53
+http://www.jameco.com/webapp/wcs/stores/servlet/Product_10001_10001_255514_-1
