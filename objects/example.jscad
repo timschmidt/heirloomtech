@@ -1,17 +1,17 @@
 function getProperties(){
-return { id: "example",
-  name: "Example Object",
-  description: "The HeirloomTech example object.  Use this as a template for creating your own.",
-  products: ["https://www.heirloomtech.com"],
-  licenses: ["https://www.gnu.org/licenses/agpl-3.0.html", "http://www.ohwr.org/projects/cernohl/wiki"],
-  git: "http://www.github.com/timschmidt/heirloomtech",
-  authors: ["Timothy Schmidt"],
-  sources: ["3d-printer", "cnc-mill", "drill-press", "frame-factory"],
-  render: function(){},
-  translate: function(){},
-  scale: function(){}
-};
-
+  return { id: "example",
+    name: "Example Object",
+    description: "The HeirloomTech example object.  Use this as a template for creating your own.",
+    products: ["https://www.heirloomtech.com"],
+    licenses: ["https://www.gnu.org/licenses/agpl-3.0.html", "http://www.ohwr.org/projects/cernohl/wiki"],
+    git: "http://www.github.com/timschmidt/heirloomtech",
+    authors: ["Timothy Schmidt"],
+    sources: ["3d-printer", "cnc-mill", "drill-press", "frame-factory"],
+    keywords: ["example", "demonstration", "template"],
+    render: function(){},
+    translate: function(){},
+    scale: function(){}
+  };
 }
 
 function getParameterDefinitions() {

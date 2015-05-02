@@ -1,3 +1,4 @@
+/!OpenSCAD
 /*
 * 254 AluTube, 25.4mm=1" 
 *	- based on the Aluminium profile with plastic joiners used for simple furniture construction
