@@ -5,3 +5,5 @@
 - one-click pushing to github / forking
 - event driven multi machine syncronization - opencv, external sensor, etc
 - description of the master controller scheme
+- scrape mcmaster diagrams for relevant parameters + basic design shapes
+- "insert current OpenJSCAD GUI Configuration as a function call" button

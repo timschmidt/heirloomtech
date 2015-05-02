@@ -1,6 +1,6 @@
 function getProperties(){
   return { id: "example",
-    name: "Example Object",
+    label: "Example Object",
     description: "The HeirloomTech example object.  Use this as a template for creating your own.",
     products: ["https://www.heirloomtech.com"],
     licenses: ["https://www.gnu.org/licenses/agpl-3.0.html", "http://www.ohwr.org/projects/cernohl/wiki"],
