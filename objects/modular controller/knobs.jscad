@@ -1,3 +1,5 @@
+"use strict";
+
 function getParameterDefinitions() {
   return [
     // Object Properties
@@ -35,7 +37,7 @@ function getParameterDefinitions() {
     { name: 'DivotDepth',        type: 'float', initial: 1.5, caption: "" },
     { name: 'MarkingWidth',      type: 'float', initial: 1.5, caption: "" },
     { name: 'DistanceBetweenKnurls', type: 'float', initial: 1, caption: "" },
-    { name: 'TimerKnobConst',    type: 'float', initial: 1.8, caption: "" },  
+    { name: 'TimerKnobConst',    type: 'float', initial: 1.8, caption: "" }
   ];
 }
 
@@ -55,137 +57,109 @@ function main(params){
 
   // Geometry
 
-  union() {
-    translate([0, 0, (params.ShaftLength===0)? 0 : params.ShaftLength-0.001])
-    difference() {
+  union(
+    translate([0, 0, (params.ShaftLength === 0) ? 0 : params.ShaftLength - 0.001])
+    difference(){
       union() {
     
-	// Primary knob cylinder
-	cylinder(h=params.KnobHeight, r1=KnobMajorRadius, r2=KnobMinorRadius, $fn=50);
-	
-	if (params.Knurled === 1) {
-		for (i=0; i < Knurls - 1; i++) {
-		    cube([2, 2, params.KnobHeight+.001], center=true).rotate([0, 0, 45]).rotate([0, TaperAngle, 0]).translate([KnobRadius, 0, params.KnobHeight / 2]).rotate([0, 0, i * (360 / Knurls)]);
-	    }
-	}
+        // Primary knob cylinder
+        cylinder(h = params.KnobHeight, r1 = KnobMajorRadius, r2 = KnobMinorRadius, $fn = 50);
 
- 	if (params.RingMarkings>0)
-		for (i=[0 : params.RingMarkings-1])
-			rotate([0, 0, i * (360/params.RingMarkings)])
-				translate([KnobMajorRadius + params.RingWidth/2, 0, 1])
-					cube([params.RingWidth*.5, params.MarkingWidth, 2], center=true);		
-	
-	if (params.Pointer2===1)
-		translate([KnobRadius, 0, params.KnobHeight/2-2])
-			rotate([0, TaperAngle, 0])
-				cube([8, 3, params.KnobHeight], center=true);		
+        if (params.Knurled === 1) {
+            for (i=0; i < Knurls - 1; i += 1) {
+                cube([2, 2, params.KnobHeight + 0.001], center=true).rotate([0, 0, 45]).rotate([0, TaperAngle, 0]).translate([KnobRadius, 0, params.KnobHeight / 2]).rotate([0, 0, i * (360 / Knurls)]);
+            }
+        }
 
-	if (params.RingWidth>0)
-		translate([0, 0, params.RingThickness/2])
-			cylinder(r1=KnobMajorRadius + params.RingWidth, r2=KnobMinorRadius,
-					h=params.RingThickness, $fn=50, center=true);
+        if (params.RingMarkings > 0) {
+            for (i=[0 : params.RingMarkings-1]) {
+                cube([params.RingWidth * 0.5, params.MarkingWidth, 2], center=true).translate([KnobMajorRadius + params.RingWidth / 2, 0, 1]).rotate([0, 0, i * (360/params.RingMarkings)]);
+            }
+        }
+    
+        if (params.Pointer2 === 1) {
+            cube([8, 3, params.KnobHeight], center=true).rotate([0, TaperAngle, 0]).translate([KnobRadius, 0, params.KnobHeight / 2 - 2]);
+        }
 
-	if (Divot===2)
-		translate([0, 0, params.KnobHeight])
-			difference()
-			{
-				scale([1, 1, 0.5])
-					sphere(r=KnobMinorRadius, $fn=50, center=true);
+        if (params.RingWidth > 0) {
+            cylinder(r1 = KnobMajorRadius + params.RingWidth, r2 = KnobMinorRadius, h = params.RingThickness, $fn = 50, center=true).translate([0, 0, params.RingThickness / 2]);
+        }
 
-				translate([0, 0, 0-(KnobMinorRadius+.001)])
-					cube([KnobMinorRadius*2.5, KnobMinorRadius*2.5,
-							KnobMinorRadius*2], center=true);
-			}
+        if (Divot === 2) {
+            difference() {
+                sphere(r=KnobMinorRadius, $fn = 50, center=true).scale([1, 1, 0.5]);
+                cube([KnobMinorRadius * 2.5, KnobMinorRadius * 2.5, KnobMinorRadius * 2], center=true).translate([0, 0, 0 - (KnobMinorRadius + 0.001)]);
+            }.translate([0, 0, params.KnobHeight])
+        }
 
-	if (params.TimerKnob===1) intersection()
-		{
-			translate([0, 0, 0-(params.KnobDiameter*params.TimerKnobConst) + params.KnobHeight])
-			sphere(r=params.KnobDiameter*params.TimerKnobConst, $fn=50, center=true);		
-	
-			translate([0-(params.KnobDiameter*params.TimerKnobConst)*0.1, 0,
-					params.KnobHeight/2])
-				scale([1, 0.5, 1])
-					cylinder(h=params.KnobHeight, r=(params.KnobDiameter*params.TimerKnobConst) *
-							0.8, $fn=3, center=true);
-		}
-}
+        if (params.TimerKnob === 1) intersection() {
+            translate([0, 0, 0 - (params.KnobDiameter * params.TimerKnobConst) + params.KnobHeight])
+            sphere(r = params.KnobDiameter * params.TimerKnobConst, $fn = 50, center = true);        
+            cylinder(h=params.KnobHeight, r = (params.KnobDiameter * params.TimerKnobConst) * 0.8, $fn = 3, center = true).scale([1, 0.5, 1]).translate([0 - (params.KnobDiameter * params.TimerKnobConst) * 0.1, 0, params.KnobHeight / 2]);
+        }
+    }
 
-// Pointer1: Offset hemispherical divot
-if (params.Pointer1===1)
-	translate([KnobMinorRadius*.55, 0, params.KnobHeight + DivotRadius*.6])
-		sphere(r=DivotRadius, $fn=40);
+    // Pointer1: Offset hemispherical divot
+    if (params.Pointer1 === 1) {
+        sphere(r = DivotRadius, $fn = 40).translate([KnobMinorRadius * 0.55, 0, params.KnobHeight + DivotRadius * 0.6]);
+    }
 
-// Divot1: Centered cylynrical divot
-if (Divot===1)
-	translate([0, 0, params.KnobHeight])
-		cylinder(h=params.DivotDepth*2, r=KnobMinorRadius-1.5, $fn=50,
-				center=true);
+    // Divot1: Centered cylynrical divot
+    if (Divot === 1) {
+        cylinder(h = params.DivotDepth * 2, r = KnobMinorRadius - 1.5, $fn = 50, center = true).translate([0, 0, params.KnobHeight])
+    }
 
-if (params.ShaftLength===0)
-{
-	// Hole for shaft
-	translate([0, 0, params.HoleDepth/2 - 0.001])
-		difference()
-		{
-			cylinder(r=params.HoleDiameter/2, h=params.HoleDepth, $fn=20,
-					center=true);
-	
-			// Flat for D-shaped hole
-			translate([(0-params.HoleDiameter)+params.HoleFlatThickness, 0, 0])
-				cube([params.HoleDiameter, params.HoleDiameter, params.HoleDepth+.001],
-						center=true);
-		}
-	
-	// Hole for setscrew
-	if (params.ScrewHoleDiameter>0)
-		translate([0 - (KnobMajorRadius+params.RingWidth+1)/2, 0,
-				params.HoleDepth/2])
-			rotate([0, 90, 0])
-			cylinder(h=(KnobMajorRadius+params.RingWidth+1),
-					r=params.ScrewHoleDiameter/2, $fn=20, center=true);
-}
+    if (params.ShaftLength === 0) {
+        // Hole for shaft
+        translate([0, 0, params.HoleDepth / 2 - 0.001])
+            difference() {
+                cylinder(r = params.HoleDiameter/2, h = params.HoleDepth, $fn = 20, center = true);
+    
+                // Flat for D-shaped hole
+                cube([params.HoleDiameter, params.HoleDiameter, params.HoleDepth + 0.001], center=true).translate([(0 - params.HoleDiameter) + params.HoleFlatThickness, 0, 0]);
+            }
+    
+    // Hole for setscrew
+    if (params.ScrewHoleDiameter>0)
+        translate([0 - (KnobMajorRadius+params.RingWidth+1)/2, 0,
+                params.HoleDepth/2])
+            rotate([0, 90, 0])
+            cylinder(h=(KnobMajorRadius+params.RingWidth+1),
+                    r=params.ScrewHoleDiameter/2, $fn=20, center=true);
+    }
 
-// Make sure bottom ends at z=0
-translate([0, 0, -10])
-	cube([(KnobMajorRadius+params.RingWidth) * 3,
-			(KnobMajorRadius+params.RingWidth) * 3, 20], center=true);
-}
+        // Make sure bottom ends at z=0
+        cube([(KnobMajorRadius+params.RingWidth) * 3, (KnobMajorRadius+params.RingWidth) * 3, 20], center=true).translate([0, 0, -10]);
+    }
 
-if (params.ShaftLength>0)
-	difference()
-	{
-		translate([0, 0, params.ShaftLength/2])
-			cylinder(h=params.ShaftLength, r=params.ShaftDiameter/2, $fn=20,
-					center=true);
+    if (params.ShaftLength>0) {
+        difference() {
+            translate([0, 0, params.ShaftLength/2])
+                cylinder(h = params.ShaftLength, r = params.ShaftDiameter / 2, $fn = 20, center = true);
 
-		if (params.NotchedShaft===1)
-		{
-			cube([params.HoleDiameter/2, params.ShaftDiameter*2, params.ShaftLength],
-					center=true);
-		}
+            if (params.NotchedShaft === 1) {
+                cube([params.HoleDiameter / 2, params.ShaftDiameter * 2, params.ShaftLength], center = true);
+            }
 
-		// Hole for shaft
-		translate([0, 0, params.HoleDepth/2 - 0.001])
-			difference()
-			{
-				cylinder(r=params.HoleDiameter/2, h=params.HoleDepth, $fn=20,
-						center=true);
-		
-				// Flat for D-shaped hole
-				translate([(0-params.HoleDiameter)+params.HoleFlatThickness, 0, 0])
-					cube([params.HoleDiameter, params.HoleDiameter, params.HoleDepth+.001],
-							center=true);
-			}
-		
-		// Hole for setscrew
-		if (params.ScrewHoleDiameter>0)
-			translate([0 - (KnobMajorRadius+params.RingWidth+1)/2, 0,
-					params.HoleDepth/2])
-				rotate([0, 90, 0])
-				cylinder(h=(KnobMajorRadius+params.RingWidth+1),
-						r=params.ScrewHoleDiameter/2, $fn=20, center=true);
-	}
-}
+            // Hole for shaft
+            translate([0, 0, params.HoleDepth/2 - 0.001])
+                difference() {
+                    cylinder(r=params.HoleDiameter/2, h=params.HoleDepth, $fn=20, center=true);
+        
+                    // Flat for D-shaped hole
+                    translate([(0 - params.HoleDiameter) + params.HoleFlatThickness, 0, 0])
+                        cube([params.HoleDiameter, params.HoleDiameter, params.HoleDepth + 0.001], center=true);
+                }
+        
+            // Hole for setscrew
+            if (params.ScrewHoleDiameter > 0) {
+                translate([0 - (KnobMajorRadius+params.RingWidth+1)/2, 0, params.HoleDepth / 2])
+                    rotate([0, 90, 0])
+                    cylinder(h=(KnobMajorRadius+params.RingWidth + 1), r = params.ScrewHoleDiameter / 2, $fn = 20, center = true);
+            }
+        }
+    }
+  );
 
   return result;
 }
