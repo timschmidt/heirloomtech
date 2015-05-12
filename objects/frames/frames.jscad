@@ -1,39 +1,16 @@
-function getProperties(){
-  return { id: "frame",
-    name: "Frame",
-    description: "HeirloomTech frame member library",
-    products: ["https://www.heirloomtech.com", "http://www.8020.net/HT-Series-1.asp"],
-    licenses: ["https://www.gnu.org/licenses/agpl-3.0.html", "http://www.ohwr.org/projects/cernohl/wiki"],
-    git: "http://www.github.com/timschmidt/heirloomtech",
-    authors: ["Timothy Schmidt", "Michael Williams"],
-    sources: ["3d-printer", "cnc-mill", "drill-press", "frame-factory"],
-    keywords: ["frame", "gridbeam", "holey tube", "matrix"],
-    render: function(){},
-    translate: function(){},
-    scale: function(){}
-  };
-}
-
-// zBeam(length) - create a vertical bitbeam strut 'length' long
-// xBeam(length) - create a horizontal bitbeam strug along the X axis
-// yBeam(length) - create a horizontal bitbeam strut along the Y axis
-// translateBeam(beam, [x, y, z]) - translate bitbeam struts in X, Y, or Z axes in units 'beam_width'
-
-var cylresolution=16;
-var beam_width=8;
-var hole_radius=2.4;
-
 // Here we define the user editable parameters: 
 function getParameterDefinitions() {
   return [
-    {
-      name: 'quality', 
-      type: 'choice',
-      caption: 'Quality',
-      values: [0, 1],
-      captions: ["Draft","High"], 
-      default: 0,
-    },    
+    //{ id: "frame" },
+    //{ name: "Frame",
+    //{ description: "HeirloomTech frame member library" },
+    //{ products: ["https://www.heirloomtech.com", "http://www.8020.net/HT-Series-1.asp"] },
+    //{ licenses: ["https://www.gnu.org/licenses/agpl-3.0.html", "http://www.ohwr.org/projects/cernohl/wiki"] },
+    //{ git: "http://www.github.com/timschmidt/heirloomtech" },
+    //{ authors: ["Timothy Schmidt", "Michael Williams"] },
+    //{ sources: ["3d-printer", "cnc-mill", "drill-press", "frame-factory"] },
+    //{ keywords: ["frame", "gridbeam", "holey tube", "matrix"] },
+    { name: 'quality', type: 'choice', caption: 'Quality', values: [0, 1], captions: ["Draft","High"], default: 0 },    
     { name: 'beam_width', caption: 'Spacing between holes', type: 'float', default: 10 },
     { name: 'hole_radius', caption: 'Radius of holes', type: 'float', default: 2.4 },
     { name: 'length', caption: 'Beam length', type: 'int', default: 10 }
@@ -41,7 +18,17 @@ function getParameterDefinitions() {
 }
 
 
+// zBeam(length) - create a vertical bitbeam strut 'length' long
+// xBeam(length) - create a horizontal bitbeam strug along the X axis
+// yBeam(length) - create a horizontal bitbeam strut along the Y axis
+// translateBeam(beam, [x, y, z]) - translate bitbeam struts in X, Y, or Z axes in units 'beam_width'
+
+
 function main(params) {
+    var cylresolution=16;
+    var beam_width=8;
+    var hole_radius=2.4;
+
     cylresolution=(params.quality == "1")? 64:16;
     beam_width=params.beam_width;
     hole_radius=params.hole_radius;
