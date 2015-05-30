@@ -14,19 +14,27 @@ var cylresolution=16;
 var beam_width=8;
 var hole_radius=2.4;
 
-// Here we define the user editable parameters: 
+// Here we define the user editable parameters:
 function getParameterDefinitions() {
   return [
-    {
-      name: 'quality', 
+    { name: 'quality',
       type: 'choice',
       caption: 'Quality',
       values: [0, 1],
       captions: ["Draft","High"]
-    },    
-    { name: 'beam_width', caption: 'Spacing between holes', type: 'float' },
-    { name: 'hole_radius', caption: 'Radius of holes', type: 'float' },
-    { name: 'length', caption: 'Beam length', type: 'int' }
+    },
+    { name: 'beam_width',
+      caption: 'Spacing between holes',
+      type: 'float'
+    },
+    { name: 'hole_radius',
+      caption: 'Radius of holes',
+      type: 'float'
+    },
+    { name: 'length',
+      caption: 'Beam length',
+      type: 'int'
+    }
   ];
 }
 
@@ -65,7 +73,7 @@ function zBeam(length) {
     for (var i = 0; i < length; i++)
     {
         holes.push(xHole(i));
-        holes.push(yHole(i)); 
+        holes.push(yHole(i));
     }
     var beam = cube.subtract(holes);
     return beam;

@@ -1,4 +1,5 @@
 // @todo rotation isn't quite the same as layout on a grid - rejigger this to do grid-based evaluation of slot tolerances and hole layout
+// @todo mirror over the origin to produce a symmetrical pattern
 
 function getParameterDefinitions() {
   return [
@@ -29,7 +30,7 @@ function comparePatterns(a, b){
 function main(params) {
   var origin = [0];
   var metric_lumber = [25, 40, 50, 100];
-  var inch_lumber = [0.5 * 25.4, 0.75 * 25.4, 25.4, 1.5 * 25.4];
+  var inch_lumber = [0.5 * 25.4, 0.75 * 25.4, 25.4, 1.5 * 25.4, 2 * 25.4, 3 * 25.4, 4 * 25.4];
   
   var patterns = origin.concat(metric_lumber,inch_lumber);
   patterns.sort(comparePatterns);
