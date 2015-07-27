@@ -1,0 +1,6 @@
+(03:11:44 PM) Tim Schmidt: Personally, I'd like it to be able to accept OpenJSCAD files for input, in addition to STLs.  OpenJSCAD has all the code for both of those things.  We can steal most of it.  But that implies a 3D / 2D viewer area.  And an area for selecting model parameters.  Obvs we need a jog control.  And a terminal / comms area.  What else?
+(03:12:33 PM) Tim Schmidt: Like, compared to Cura or Repetier or Octoprint, what would you add / remove?
+(03:14:30 PM) Joe Zimmerman: I would like to see a dry run button and another called trace max cutting area
+(03:14:40 PM) Tim Schmidt: taking notes...
+(03:15:07 PM) Joe Zimmerman: I really want it to draw an outline of the max cutting area with the real laser being on... so I can see if my stock material is big enough.
+(03:15:18 PM) Joe Zimmerman: That's what I mean by trace max cutting limits

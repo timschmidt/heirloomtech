@@ -1,7 +1,7 @@
-// Here we define the user editable parameters: 
+// Here we define the user editable parameters:
 function getParameterDefinitions() {
   return [
-    //{ id: "frame" },
+    //{ type: "id", name: "frame" },
     //{ name: "Frame",
     //{ description: "HeirloomTech frame member library" },
     //{ products: ["https://www.heirloomtech.com", "http://www.8020.net/HT-Series-1.asp"] },
@@ -10,24 +10,23 @@ function getParameterDefinitions() {
     //{ authors: ["Timothy Schmidt", "Michael Williams"] },
     //{ sources: ["3d-printer", "cnc-mill", "drill-press", "frame-factory"] },
     //{ keywords: ["frame", "gridbeam", "holey tube", "matrix"] },
-    { name: 'quality', type: 'choice', caption: 'Quality', values: [0, 1], captions: ["Draft","High"], default: 0 },    
-    { name: 'beam_width', caption: 'Spacing between holes', type: 'float', default: 10 },
-    { name: 'hole_radius', caption: 'Radius of holes', type: 'float', default: 2.4 },
-    { name: 'length', caption: 'Beam length', type: 'int', default: 10 }
+    { type: 'choice', name: 'quality', caption: 'Quality', values: [0, 1], captions: ["Draft","High"], default: 0 },
+    { type: 'float', name: 'beam_width', caption: 'Spacing between holes', default: 10 },
+    { type: 'float', name: 'hole_radius', caption: 'Radius of holes', default: 2.4 },
+    { type: 'int', name: 'length', caption: 'Beam length', default: 10 }
   ];
 }
-
 
 // zBeam(length) - create a vertical bitbeam strut 'length' long
 // xBeam(length) - create a horizontal bitbeam strug along the X axis
 // yBeam(length) - create a horizontal bitbeam strut along the Y axis
 // translateBeam(beam, [x, y, z]) - translate bitbeam struts in X, Y, or Z axes in units 'beam_width'
 
+var cylresolution=16;
+var beam_width=8;
+var hole_radius=2.4;
 
 function main(params) {
-    var cylresolution=16;
-    var beam_width=8;
-    var hole_radius=2.4;
 
     cylresolution=(params.quality == "1")? 64:16;
     beam_width=params.beam_width;
@@ -62,9 +61,10 @@ function zBeam(length) {
     for (var i = 0; i < length; i++)
     {
         holes.push(xHole(i));
-        holes.push(yHole(i)); 
+        holes.push(yHole(i));
     }
     var beam = cube.subtract(holes);
+    beam.properties.myConnector = new CSG.Connector([10, 0, 0], [1, 0, 0], [0, 0, 1]);
     return beam;
 }
 
@@ -78,4 +78,4 @@ function xBeam(length) {
 
 function translateBeam(beam, t_vector) {
     return beam.translate(t_vector.map(function(n) { return beam_width*n; }));
-};
+}
